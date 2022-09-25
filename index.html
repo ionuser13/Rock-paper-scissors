@@ -4,14 +4,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock, papers, scissors</title>
+    <title>Rock, paper, scissors</title>
 </head>
 <body>
     <script>
-        let computerChoice = "";
-        function getComputerChoice(){
-            //search previous cide to pick one of th ethree
+        const values = ["rock", "paper", "scissors"];
+        let playerSelection = prompt("What is your move?: rock, paper or scissors?", "").toLowerCase();//obtains the player moves
+        //checks if the user choice is equal to any of the possible values
+        //console.log(playerSelection)
+        function check(playerSelection) {
+            if(playerSelection===values[0]||playerSelection===values[1]||playerSelection===values[2]){
+                return true                
+            }
+            else {
+                return false
+            }
         }
+        //console.log(check(playerSelection));
+        if(check(playerSelection)){
+            let computerValue = Math.ceil(Math.random()*3) - 1;
+            let computerChoice;
+            //console.log(computerChoice)
+            function getComputerChoice(computerValue){
+                computerChoice = values[computerValue];
+                return computerChoice;
+                //randomly returns a value from possible-values
+                //search previous cide to pick one of th ethree
+            }
+            let computerSelection = getComputerChoice(computerValue);
+            //console.log(computerSelection);
+            function round(playerSelection, computerSelection){
+                if (playerSelection === values[0] && computerSelection === values[2] || playerSelection === values[1] && computerSelection === values[0] || playerSelection === values[2] && computerSelection === values[1]){
+                    console.log(`You win! ${playerSelection} beats ${computerSelection}`);
+                }
+                else if (playerSelection === values[0] && computerSelection === values[1] || playerSelection === values[1] && computerSelection === values[2] || playerSelection === values[2] && computerSelection === values[0]) {
+                    console.log(`You lose! ${computerSelection} beats ${playerSelection}`)
+                }
+                else if (playerSelection === computerValue){
+                    console.log("It's a tie!!")
+                }
+            }
+            console.log(round(playerSelection, computerSelection))
+        }
+        else {
+            console.log("Please enter a valid value.")
+        }
+        
     </script>
 </body>
 </html>
