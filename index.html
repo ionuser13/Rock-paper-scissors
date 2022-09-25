@@ -21,7 +21,6 @@
             //search previous cide to pick one of th ethree
         }
         let computerSelection = getComputerChoice();
-        //console.log(computerSelection);
         let userCount = 0;
         let computerCount = 0;
         //console.log(check(playerSelection));
@@ -43,7 +42,7 @@
                 //console.log(computerCount);
                 //return computerCount
             }
-            else if (playerSelection === computerValue){
+            else if (playerSelection === computerSelection){
                 console.log("It's a tie!!")
             }
             else {
@@ -60,7 +59,11 @@
             
             while (playedRounds < totalRounds) {
                 let playerSelection = prompt("What is your move?: rock, paper or scissors?", "").toLowerCase();
+                playRound(playerSelection, computerSelection);
+                userPoints += playRound(playerSelection, computerSelection);
+                playedRounds++;
             }
+            
             //for (let i = 0; i < 5; i++) {
             //    playRound(playerSelection, computerSelection)
             //    newResult += actualResult;
