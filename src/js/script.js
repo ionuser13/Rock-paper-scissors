@@ -1,37 +1,57 @@
 const body = document.querySelector("body");
 const results = document.createElement("div");
 results.classList.add = "results";
-// results.innerText = "";
 const rockButton = document.createElement("button");
 rockButton.innerText = "Rock"
 const paperButton = document.createElement("button");
 paperButton.innerText = "Paper";
 const scissorsButton = document.createElement("button");
 scissorsButton.innerText = "scissor";
+const restartButton = document.createElement("button");
+restartButton.innerText = "Restart";
+restartButton.className = "none";
 const currentScore = document.createElement("div");
-// currentScore.innerText = "";
 
 const values = ["rock", "paper", "scissors"];
-//obtains the player moves
 let computerChoice;
 let playerSelection;
-//console.log(computerChoice)
+
 function getComputerChoice(){
     computerChoice = values[Math.ceil(Math.random()*3) - 1];
     return computerChoice;
-    //randomly returns a value from possible-values
-    //search previous cide to pick one of th ethree
 }
+
+function disableButtons() {
+    rockButton.disabled = true;
+    scissorsButton.disabled = true;
+    paperButton.disabled = true;
+    restartButton.classList.remove("none");
+}
+
+
 let computer = getComputerChoice();
 let userCount = 0;
 let computerCount = 0;
+let numberOfGames = 0;
+
+function restart() {
+restartButton.classList.add("none");
+    rockButton.disabled = false;
+    scissorsButton.disabled = false;
+    paperButton.disabled = false;
+}
+
+function printingScore(container, score) {
+    container.innerText = JSON.stringify(score)
+}
+
 const playerScore = document.createElement("div");
 playerScore.innerText = JSON.stringify(userCount);
 const computerScore = document.createElement("div");
 computerScore.innerText = JSON.stringify(computerCount); 
 
 
-body.append(currentScore, rockButton, paperButton, scissorsButton, playerScore, computerScore, results)
+body.append(currentScore, rockButton, paperButton, scissorsButton, playerScore, computerScore, results, restartButton)
 
 //console.log(check(playerSelection));
 //checks if the user choice is equal to any of the possible values
@@ -42,9 +62,10 @@ function playRound(playerSelection){
         console.log(computer);
         computer = getComputerChoice();
         userCount = userCount + 1;
-        playerScore.innerText = JSON.stringify(userCount)
+        printingScore(playerScore, userCount);
         if(userCount === 5) {
-            results.innerText = "You won the game!!"
+            results.innerText = "You won the game!!";
+            disableButtons();
         };
         console.log(userCount)
     }
@@ -54,9 +75,10 @@ function playRound(playerSelection){
         console.log(computer);
         computer = getComputerChoice();
         computerCount = computerCount + 1; 
-        computerScore.innerText = JSON.stringify(computerCount)
+        printingScore(computerScore, computerCount)
         if(computerCount === 5){
-            results.innerText = "You lost the game!"
+            results.innerText = "You lost the game!";
+            disableButtons();
         }
         console.log(computerCount);
         //return computerCount
@@ -66,7 +88,6 @@ function playRound(playerSelection){
         console.log(computer);
         computer = getComputerChoice();
         currentScore.innerText = "It's a tie!!";
-        results.innerText = "It's a tie!!";
     }
     return userCount
 }
@@ -79,16 +100,12 @@ paperButton.addEventListener("click", () => {
 scissorsButton.addEventListener("click", () => {
     playRound("scissors", computer);
 })
-
-
-// function game(totalRounds = 5){
-//     let playedRounds = 0;
-//     let userPoints = 0;
-    
-//     while (playedRounds < totalRounds) {
-//         let playerSelection = prompt("What is your move?: rock, paper or scissors?", "").toLowerCase();
-//         playRound();
-//         userPoints += playRound(playerSelection, computer);
-//         playedRounds++;
-//     }
-// }
+restartButton.addEventListener("click", () => {
+    restart();
+    userCount = 0;
+    computerCount = 0;
+    printingScore(playerScore, userCount);
+    printingScore(computerScore, computerCount)
+    currentScore.innerText = "";
+    results.innerText = "";
+})
