@@ -1,16 +1,23 @@
-const body = document.querySelector("body");
+const main = document.querySelector("main");
 const results = document.createElement("div");
 results.classList.add = "results";
+
 const rockButton = document.createElement("button");
-rockButton.innerText = "Rock"
+rockButton.innerHTML = '<i class="fa-solid fa-hand-fist"></i>';
+
 const paperButton = document.createElement("button");
-paperButton.innerText = "Paper";
+paperButton.innerHTML = '<i class="fa-solid fa-hand"></i>';
+
 const scissorsButton = document.createElement("button");
-scissorsButton.innerText = "scissor";
+scissorsButton.innerHTML = '<i class="fa-solid fa-hand-scissors"></i>';
+
 const restartButton = document.createElement("button");
 restartButton.innerText = "Restart";
 restartButton.className = "none";
+
 const currentScore = document.createElement("div");
+currentScore.innerText = "Make your choice";
+
 
 const values = ["rock", "paper", "scissors"];
 let computerChoice;
@@ -35,7 +42,7 @@ let computerCount = 0;
 let numberOfGames = 0;
 
 function restart() {
-restartButton.classList.add("none");
+    restartButton.classList.add("none");
     rockButton.disabled = false;
     scissorsButton.disabled = false;
     paperButton.disabled = false;
@@ -50,8 +57,15 @@ playerScore.innerText = JSON.stringify(userCount);
 const computerScore = document.createElement("div");
 computerScore.innerText = JSON.stringify(computerCount); 
 
+const currentScoreContainer = document.querySelector(".current-score");
+const scoresContainer = document.querySelector(".scores");
+const optionsContainer = document.querySelector(".options");
 
-body.append(currentScore, rockButton, paperButton, scissorsButton, playerScore, computerScore, results, restartButton)
+currentScoreContainer.append(currentScore);
+scoresContainer.append(playerScore, computerScore);
+optionsContainer.append(rockButton, paperButton, scissorsButton)
+main.append(currentScore, scoresContainer, optionsContainer)
+// main.append(currentScore, playerScore, computerScore, rockButton, paperButton, scissorsButton, results, restartButton)
 
 //console.log(check(playerSelection));
 //checks if the user choice is equal to any of the possible values
@@ -91,6 +105,7 @@ function playRound(playerSelection){
     }
     return userCount
 }
+
 rockButton.addEventListener("click", () => {
     playRound("rock", computer);
 })
@@ -106,6 +121,6 @@ restartButton.addEventListener("click", () => {
     computerCount = 0;
     printingScore(playerScore, userCount);
     printingScore(computerScore, computerCount)
-    currentScore.innerText = "";
+    currentScore.innerText = "Make your choice";
     results.innerText = "";
 })

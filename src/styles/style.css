@@ -3,6 +3,22 @@
     margin: 0;
     padding: 0;
 }
+body {
+    height: 100vh;
+}
+header, footer {
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+main {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .none {
     display: none;
 }
