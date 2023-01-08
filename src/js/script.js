@@ -60,12 +60,13 @@ computerScore.innerText = JSON.stringify(computerCount);
 const currentScoreContainer = document.querySelector(".current-score");
 const scoresContainer = document.querySelector(".scores");
 const optionsContainer = document.querySelector(".options");
+const endmatchContainer = document.querySelector(".end-match")
 
 currentScoreContainer.append(currentScore);
 scoresContainer.append(playerScore, computerScore);
 optionsContainer.append(rockButton, paperButton, scissorsButton)
 main.append(currentScore, scoresContainer, optionsContainer)
-// main.append(currentScore, playerScore, computerScore, rockButton, paperButton, scissorsButton, results, restartButton)
+// main.append(results, restartButton)
 
 //console.log(check(playerSelection));
 //checks if the user choice is equal to any of the possible values
