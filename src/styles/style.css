@@ -101,6 +101,24 @@ footer {
     font-size: 16px;
     font-family: 'Supermercado One', cursive;
 }
+.link {
+    color: var(--primary-light)
+}
+.link:hover {
+    color: var(--secondary-dark-active);
+    transition: .3s;
+
+}
 .none {
     display: none;
+}
+@media screen and (max-width: 585px) {
+    .title {
+        letter-spacing: 0px;
+    }
+    .options button {
+        width: 80px;
+        height: 80px;
+        font-size: 40px;
+    }
 }
