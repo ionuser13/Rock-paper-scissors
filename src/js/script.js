@@ -1,6 +1,6 @@
 const main = document.querySelector("main");
 const results = document.createElement("div");
-results.classList.add = "results";
+results.className = "final-results";
 
 const rockButton = document.createElement("button");
 rockButton.innerHTML = '<i class="fa-solid fa-hand-fist"></i>';
@@ -16,7 +16,7 @@ restartButton.innerText = "Restart";
 restartButton.className = "none";
 
 const currentScore = document.createElement("div");
-currentScore.innerText = "Make your choice";
+currentScore.innerHTML = "Make your choice";
 
 
 const values = ["rock", "paper", "scissors"];
@@ -65,14 +65,14 @@ const endmatchContainer = document.querySelector(".end-match")
 currentScoreContainer.append(currentScore);
 scoresContainer.append(playerScore, computerScore);
 optionsContainer.append(rockButton, paperButton, scissorsButton)
-main.append(currentScore, scoresContainer, optionsContainer)
+main.append(currentScoreContainer, scoresContainer, optionsContainer, endmatchContainer)
 // main.append(results, restartButton)
 
 //console.log(check(playerSelection));
 //checks if the user choice is equal to any of the possible values
 function playRound(playerSelection){
     if ((playerSelection === values[0] && computer === values[2]) || (playerSelection === values[1] && computer === values[0]) || (playerSelection === values[2] && computer === values[1])){
-        currentScore.innerText = `You win! ${playerSelection} beats ${computer}`;
+        currentScore.innerHTML = `<h2>You win!</h2><p>${playerSelection} beats ${computer}</p>`;
         console.log(`You win! ${playerSelection} beats ${computer}`);
         console.log(computer);
         computer = getComputerChoice();
@@ -85,7 +85,7 @@ function playRound(playerSelection){
         console.log(userCount)
     }
     else if ((playerSelection === values[0] && computer === values[1]) ||(playerSelection === values[1] && computer === values[2]) || (playerSelection === values[2] && computer === values[0])) {
-        currentScore.innerText = `You lose! ${computer} beats ${playerSelection}`;
+        currentScore.innerHTML = `<h2>You lose!</h2><p>${computer} beats ${playerSelection}</p>`;
         console.log(`You lose! ${computer} beats ${playerSelection}`);
         console.log(computer);
         computer = getComputerChoice();
@@ -99,7 +99,7 @@ function playRound(playerSelection){
         //return computerCount
     }
     else if (playerSelection === computer){
-        currentScore.innerText = "It's a tie!!";
+        currentScore.innerHTML = "<h2>It's a tie!!</h2>";
         console.log(computer);
         computer = getComputerChoice();
         currentScore.innerText = "It's a tie!!";

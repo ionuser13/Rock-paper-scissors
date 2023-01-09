@@ -19,6 +19,7 @@ html {
 }
 body {
     height: 100vh;
+    color: var(--primary-light);
 }
 header, footer {
     height: 10vh;
@@ -26,7 +27,6 @@ header, footer {
     justify-content: center;
     align-items: center;
     background-color: var(--header);
-    color: var(--primary-light);
 }
 .title {
     font-size: 48px;
@@ -39,6 +39,11 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: var(--secondary-dark);
+    font-family: 'Roboto', sans-serif;
+}
+.current-score div {
+    font-size: 32px;
 }
 .scores {
     display: flex;
