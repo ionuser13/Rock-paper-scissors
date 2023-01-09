@@ -13,7 +13,6 @@ scissorsButton.innerHTML = '<i class="fa-solid fa-hand-scissors"></i>';
 
 const restartButton = document.createElement("button");
 restartButton.innerText = "Restart";
-restartButton.className = "none";
 
 const currentScore = document.createElement("div");
 currentScore.innerHTML = "Make your choice";
@@ -32,7 +31,7 @@ function disableButtons() {
     rockButton.disabled = true;
     scissorsButton.disabled = true;
     paperButton.disabled = true;
-    restartButton.classList.remove("none");
+    endmatchContainer.classList.remove("none");
 }
 
 
@@ -42,7 +41,7 @@ let computerCount = 0;
 let numberOfGames = 0;
 
 function restart() {
-    restartButton.classList.add("none");
+    endmatchContainer.classList.add("none");
     rockButton.disabled = false;
     scissorsButton.disabled = false;
     paperButton.disabled = false;
@@ -62,11 +61,12 @@ computerScore.className = "points"
 const currentScoreContainer = document.querySelector(".current-score");
 const scoresContainer = document.querySelector(".scores");
 const optionsContainer = document.querySelector(".options");
-const endmatchContainer = document.querySelector(".end-match")
+const endmatchContainer = document.querySelector(".end-match");
 
 currentScoreContainer.append(currentScore);
 scoresContainer.append(playerScore, computerScore);
-optionsContainer.append(rockButton, paperButton, scissorsButton)
+optionsContainer.append(rockButton, paperButton, scissorsButton);
+endmatchContainer.append(restartButton)
 main.append(currentScoreContainer, scoresContainer, optionsContainer, endmatchContainer)
 // main.append(results, restartButton)
 
