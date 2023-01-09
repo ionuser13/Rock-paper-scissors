@@ -19,7 +19,7 @@ const currentScore = document.createElement("div");
 currentScore.innerHTML = "Make your choice";
 
 
-const values = ["rock", "paper", "scissors"];
+const values = ["Rock", "Paper", "Scissors"];
 let computerChoice;
 let playerSelection;
 
@@ -52,10 +52,12 @@ function printingScore(container, score) {
     container.innerText = JSON.stringify(score)
 }
 
-const playerScore = document.createElement("div");
-playerScore.innerText = JSON.stringify(userCount);
-const computerScore = document.createElement("div");
-computerScore.innerText = JSON.stringify(computerCount); 
+const playerScore = document.createElement("p");
+playerScore.innerText = `Player: ${JSON.stringify(userCount)}`;
+playerScore.className = "points";
+const computerScore = document.createElement("p");
+computerScore.innerText = `Computer: ${JSON.stringify(computerCount)}`;
+computerScore.className = "points" 
 
 const currentScoreContainer = document.querySelector(".current-score");
 const scoresContainer = document.querySelector(".scores");
@@ -108,13 +110,13 @@ function playRound(playerSelection){
 }
 
 rockButton.addEventListener("click", () => {
-    playRound("rock", computer);
+    playRound("Rock", computer);
 })
 paperButton.addEventListener("click", () => {
-    playRound("paper", computer);
+    playRound("Paper", computer);
 })
 scissorsButton.addEventListener("click", () => {
-    playRound("scissors", computer);
+    playRound("Scissors", computer);
 })
 restartButton.addEventListener("click", () => {
     restart();
